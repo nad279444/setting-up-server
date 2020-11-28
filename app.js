@@ -6,18 +6,21 @@ const fs = require('fs')
 
 
 const server = http.createServer(function(req,res){
-    res.writeHead(200,{'Content-Type':'text/html'})
+    res.setHeader('Content-Type','text/html')
     
         let path = './Docs/';
         switch (req.url) {
             case '/':
                 path += 'server.html';
+                res.statusCode = 200 
                 break;
             case '/about':
                 path+= 'about.html';
+                res.statusCode = 200
                 break;
             default:
                 path+= '404.html';
+                res.statusCode = 404
                 break;
         }
         
